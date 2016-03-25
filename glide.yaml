@@ -1,0 +1,18 @@
+package: .
+excludeDirs:
+- gopath
+import:
+- package: github.com/Sirupsen/logrus
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: k8s.io/kubernetes
+  version: v1.2.0
+  subpackages:
+  - pkg/api
+  - pkg/client/cache
+  - pkg/client/unversioned
+  - pkg/client/unversioned/clientcmd
+  - pkg/controller/framework
+  - pkg/fields
+- package: github.com/inconshreveable/go-vhost
