@@ -1,7 +1,8 @@
 #!/bin/bash
 set -ev
 
-pip install pyopenssl
+sudo pip install -U pip
+sudo pip install pyopenssl
 
 if [ ! -f "${HOME}/google-cloud-sdk/.installed" ]; then
     rm -rf "${HOME}/google-cloud-sdk"
