@@ -1,1 +1,1 @@
-web: router
+web: bin/router
