@@ -9,7 +9,11 @@ cache:
 env:
   - PATH=${HOME}/google-cloud-sdk/bin:${PATH} CLOUDSDK_PYTHON_SITEPACKAGES=1 CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
-  - ./scripts/ci/setup-google-sdk.sh
+  - openssl aes-256-cbc -K $encrypted_36afdb4d1021_key -iv $encrypted_36afdb4d1021_iv -in gcp-travisci.json.enc -out gcp-travisci.json -d
+  - echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+  - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  - sudo apt-get update -qq && sudo apt-get install google-cloud-sdk
+  - gcloud auth activate-service-account --key-file gcp-travisci.json
 install:
   - gcloud config set project project-kel
 before_script:
