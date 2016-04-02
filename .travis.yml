@@ -17,7 +17,7 @@ before_install:
 install:
   - gcloud config set project project-kel
 before_script:
-  - docker pull quay.io/kelproject/bundle-builder
+  - docker pull quay.io/kelproject/bundle-builder:git-422ed76f
 script:
   - ./scripts/ci/build.sh
 after_success:
