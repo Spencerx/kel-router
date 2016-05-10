@@ -25,6 +25,7 @@ const (
 
 type kubernetesServiceConfig struct {
 	Hosts []string `json:"hosts,omitempty"`
+	Mode  string   `json:"mode,omitempty"`
 	TLS   struct {
 		Key         []byte `json:"key"`
 		Certificate []byte `json:"certificate"`
@@ -139,7 +140,14 @@ func (ds *kubernetesDataStore) setConfig(config *kubernetesServiceConfig, sh Syn
 	}
 	for i := range config.Hosts {
 		host := config.Hosts[i]
-		rp := reverseproxy.NewHTTPReverseProxy()
+		var rp reverseproxy.ReverseProxy
+		switch config.Mode {
+		case "raw":
+			rp = reverseproxy.NewRawReverseProxy()
+			break
+		default:
+			rp = reverseproxy.NewHTTPReverseProxy()
+		}
 		vhm := &server.VirtualHostMatcher{
 			Vhosts: []*server.VirtualHost{
 				{
