@@ -1,5 +1,5 @@
-hash: c88b379bc262a7959291309b4468994020d049cfbd4cf6b61c4c4460bcc8f9c9
-updated: 2016-03-25T11:11:19.579628906-06:00
+hash: 14e077e587b834eeb240ee8c2aadfd2e8979af6204bc70ce575ea4dbb501c7e4
+updated: 2016-05-10T17:59:52.466559656Z
 imports:
 - name: bitbucket.org/ww/goautoneg
   version: 75cd24fc2f2c
@@ -115,7 +115,7 @@ imports:
 - name: gopkg.in/yaml.v2
   version: d466437aa4adc35830964cffc5b5f262c63ddcb4
 - name: k8s.io/kubernetes
-  version: 5cb86ee022267586db386f62781338b0483733b3
+  version: 3eed1e3be6848b877ff80a93da3785d9034d0a4f
   subpackages:
   - pkg/api
   - pkg/client/cache
